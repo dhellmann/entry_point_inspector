@@ -60,10 +60,9 @@ class EntryPointShow(show.ShowOne):
                     parsed_args.name,
                     parsed_args.group,
                 ))
-        path = ep.dist.location
         try:
-            ep_mod = ep.load()
-        except Exception as err:
+            ep.load()
+        except Exception:
             tb = traceback.format_exception(*sys.exc_info())
         else:
             tb = ''
@@ -73,5 +72,5 @@ class EntryPointShow(show.ShowOne):
              '.'.join(ep.attrs),
              str(ep.dist),
              ep.dist.location,
-             tb,
-         ))
+             tb),
+        )
