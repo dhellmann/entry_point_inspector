@@ -1,21 +1,16 @@
-=======================
- Entry Point Inspector
-=======================
+===========================
+ Entry Point Inspector 0.1
+===========================
+
+.. tags:: python entry_point_inspector release
 
 Entry Point Inspector is a tool for looking at the entry point plugins
 installed on a system.
 
-Commands
-========
+For details, see the `home page on PyPI`_ or `GitHub repository`_.
 
-==============  =================================================
-Name            Description
-==============  =================================================
-ep show         Shows the details for a single entry point.
-group list      Shows the groups for which plugins are available.
-group show      Shows the members of a specific group.
-help            print detailed help for another command
-==============  =================================================
+.. _home page on PyPI: https://pypi.python.org/pypi/entry_point_inspector
+.. _GitHub repository: https://github.com/dhellmann/entry_point_inspector
 
 Examples
 ========
@@ -69,10 +64,3 @@ Examples
   | Path         | /Users/dhellmann/Devel/entry_point_inspector/entry_point_inspector |
   | Error        |                                                                    |
   +--------------+--------------------------------------------------------------------+
-
-See Also
-========
-
-* `stevedore`_
-
-.. _stevedore: http://stevedore.readthedocs.org/en/latest/
