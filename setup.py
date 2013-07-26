@@ -54,6 +54,10 @@ setup(
         'console_scripts': [
             'epi = entry_point_inspector.app:main',
         ],
+        'epi.commands': [
+            'group_list = entry_point_inspector.group:GroupList',
+            'group_show = entry_point_inspector.group:GroupShow',
+        ],
     },
 
     zip_safe=False,
