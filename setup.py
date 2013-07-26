@@ -57,6 +57,7 @@ setup(
         'epi.commands': [
             'group_list = entry_point_inspector.group:GroupList',
             'group_show = entry_point_inspector.group:GroupShow',
+            'ep_show = entry_point_inspector.ep:EntryPointShow',
         ],
     },
 
