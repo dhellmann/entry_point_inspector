@@ -20,7 +20,7 @@ setup(
     long_description=long_description,
 
     author='Doug Hellmann',
-    author_email='doug.hellmann@gmail.com',
+    author_email='doug@doughellmann.com',
 
     url='https://github.com/dhellmann/entry_point_inspector',
 
