@@ -75,4 +75,4 @@ See Also
 
 * `stevedore`_
 
-.. _stevedore: http://stevedore.readthedocs.org/en/latest/
+.. _stevedore: https://pypi.python.org/pypi/stevedore
