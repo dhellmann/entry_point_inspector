@@ -22,6 +22,8 @@ setup(
     author='Doug Hellmann',
     author_email='doug@doughellmann.com',
 
+    license='ASL 2.0',
+
     url='https://github.com/dhellmann/entry_point_inspector',
 
     classifiers=[
