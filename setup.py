@@ -3,7 +3,7 @@
 PROJECT = 'entry_point_inspector'
 
 # Change docs/source/conf.py too!
-VERSION = '0.1'
+VERSION = '0.1.1'
 
 from setuptools import setup, find_packages
 
