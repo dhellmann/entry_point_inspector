@@ -1,5 +1,6 @@
 import logging
 import sys
+import six
 import traceback
 
 from cliff import show
@@ -51,10 +52,10 @@ class EntryPointShow(show.ShowOne):
                 parsed_args.group,
             )
             try:
-                ep = pkg_resources.iter_entry_points(
+                ep = six.next(pkg_resources.iter_entry_points(
                     parsed_args.group,
                     parsed_args.name,
-                ).next()
+                ))
             except StopIteration:
                 raise ValueError('Could not find %r in %r' % (
                     parsed_args.name,
