@@ -1,6 +1,5 @@
 import logging
 import sys
-import six
 import traceback
 
 from cliff import show
@@ -52,7 +51,7 @@ class EntryPointShow(show.ShowOne):
                 parsed_args.group,
             )
             try:
-                ep = six.next(pkg_resources.iter_entry_points(
+                ep = next(pkg_resources.iter_entry_points(
                     parsed_args.group,
                     parsed_args.name,
                 ))
