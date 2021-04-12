@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
+from setuptools import find_packages, setup
+
 PROJECT = 'entry_point_inspector'
 
 # Change docs/source/conf.py too!
 VERSION = '0.1.2'
-
-from setuptools import setup, find_packages
 
 try:
     long_description = open('README.rst', 'rt').read()
