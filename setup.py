@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
+from setuptools import find_packages, setup
+
 PROJECT = 'entry_point_inspector'
 
 # Change docs/source/conf.py too!
 VERSION = '0.1.2'
-
-from setuptools import setup, find_packages
 
 try:
     long_description = open('README.rst', 'rt').read()
@@ -30,10 +30,10 @@ setup(
         'Development Status :: 4 - Beta',
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Intended Audience :: Developers',
         'Environment :: Console',
     ],
@@ -48,6 +48,7 @@ setup(
         'cliff',
         'setuptools',
     ],
+    requires_python='>=3.7',
 
     namespace_packages=[],
     packages=find_packages(),
