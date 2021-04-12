@@ -46,6 +46,7 @@ setup(
               ],
     install_requires=[
         'cliff',
+        'setuptools',
     ],
 
     namespace_packages=[],
