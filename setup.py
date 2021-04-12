@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 PROJECT = 'entry_point_inspector'
 
 # Change docs/source/conf.py too!
-VERSION = '0.1.2'
+VERSION = '0.2.1'
 
 try:
     long_description = open('README.rst', 'rt').read()
