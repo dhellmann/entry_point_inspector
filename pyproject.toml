@@ -36,3 +36,13 @@ ep_show = "entry_point_inspector.ep:EntryPointShow"
 
 [tool.hatch.version]
 source = "vcs"
+
+[tool.hatch.envs.test]
+dependencies = ["ruff", "pytest"]
+[tool.hatch.envs.test.scripts]
+lint = [
+    "ruff check entry_point_inspector",
+    "ruff format --check entry_point_inspector",
+]
+lint-fix = ["ruff format entry_point_inspector"]
+test = "pytest entry_point_inspector"
