@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
 name = "entry_point_inspector"
-version = "0.2.1"
+dynamic = ["version"]
 description = "Tool for looking at the entry point plugins on a system"
 readme = "README.rst"
 authors = [{ name = "Doug Hellmann", email = "doug@doughellmann.com" }]
@@ -33,3 +33,6 @@ epi = "entry_point_inspector.app:main"
 group_list = "entry_point_inspector.group:GroupList"
 group_show = "entry_point_inspector.group:GroupShow"
 ep_show = "entry_point_inspector.ep:EntryPointShow"
+
+[tool.hatch.version]
+source = "vcs"
