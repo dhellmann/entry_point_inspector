@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "entry_point_inspector"
+version = "0.2.1"
+description = "Tool for looking at the entry point plugins on a system"
+readme = "README.rst"
+authors = [{ name = "Doug Hellmann", email = "doug@doughellmann.com" }]
+license = { text = "ASL 2.0" }
+requires-python = ">=3.7"
+dependencies = ["cliff", "setuptools"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Intended Audience :: Developers",
+    "Environment :: Console",
+]
+
+[project.urls]
+Homepage = "https://github.com/dhellmann/entry_point_inspector"
+
+[project.scripts]
+epi = "entry_point_inspector.app:main"
+
+[project.entry-points."epi.commands"]
+group_list = "entry_point_inspector.group:GroupList"
+group_show = "entry_point_inspector.group:GroupShow"
+ep_show = "entry_point_inspector.ep:EntryPointShow"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
