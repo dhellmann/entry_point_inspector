@@ -8,8 +8,7 @@ LOG = logging.getLogger(__name__)
 
 
 class GroupList(lister.Lister):
-    """Shows the groups for which plugins are available.
-    """
+    """Shows the groups for which plugins are available."""
 
     def take_action(self, parsed_args):
         names = set()
@@ -18,20 +17,19 @@ class GroupList(lister.Lister):
             entry_map = pkg_resources.get_entry_map(dist)
             names.update(set(entry_map.keys()))
         return (
-            ('Name',),
+            ("Name",),
             ((n,) for n in sorted(names)),
         )
 
 
 class GroupShow(lister.Lister):
-    """Shows the members of a specific group.
-    """
+    """Shows the members of a specific group."""
 
     def get_parser(self, prog_name):
         p = super(GroupShow, self).get_parser(prog_name)
         p.add_argument(
-            'group',
-            help='the name of the group to show',
+            "group",
+            help="the name of the group to show",
         )
         return p
 
@@ -43,16 +41,18 @@ class GroupShow(lister.Lister):
             except Exception as err:
                 load_error = str(err)  # unicode?
             else:
-                load_error = ''
-            attr = '.'.join(ep.attrs)
-            results.append((
-                ep.name,
-                ep.module_name,
-                attr,
-                str(ep.dist),  # unicode?
-                load_error,
-            ))
+                load_error = ""
+            attr = ".".join(ep.attrs)
+            results.append(
+                (
+                    ep.name,
+                    ep.module_name,
+                    attr,
+                    str(ep.dist),  # unicode?
+                    load_error,
+                )
+            )
         return (
-            ('Name', 'Module', 'Member', 'Distribution', 'Error'),
+            ("Name", "Module", "Member", "Distribution", "Error"),
             results,
         )
