@@ -13,6 +13,7 @@ jobs:
       matrix:
         hatch-environment:
           - test:lint
+          - test:pkglint
 
     steps:
       - uses: actions/checkout@v2

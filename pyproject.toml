@@ -9,16 +9,16 @@ description = "Tool for looking at the entry point plugins on a system"
 readme = "README.rst"
 authors = [{ name = "Doug Hellmann", email = "doug@doughellmann.com" }]
 license = { text = "ASL 2.0" }
-requires-python = ">=3.7"
+requires-python = ">=3.11"
 dependencies = ["cliff", "setuptools"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Intended Audience :: Developers",
     "Environment :: Console",
 ]
@@ -38,7 +38,7 @@ ep_show = "entry_point_inspector.ep:EntryPointShow"
 source = "vcs"
 
 [tool.hatch.envs.test]
-dependencies = ["ruff", "pytest"]
+dependencies = ["ruff", "pytest", "check-python-versions", "twine"]
 [tool.hatch.envs.test.scripts]
 lint = [
     "ruff check entry_point_inspector",
@@ -46,3 +46,8 @@ lint = [
 ]
 lint-fix = ["ruff format entry_point_inspector"]
 test = "pytest entry_point_inspector"
+pkglint = [
+    "hatch build",
+    "twine check dist/*.tar.gz",
+    "check-python-versions --only pyproject.toml,.github/workflows/test.yml",
+]
