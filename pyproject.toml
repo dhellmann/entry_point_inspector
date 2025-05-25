@@ -49,5 +49,5 @@ test = "pytest entry_point_inspector"
 pkglint = [
     "hatch build",
     "twine check dist/*.tar.gz",
-    "check-python-versions --only pyproject.toml,.github/workflows/test.yml",
+    "check-python-versions --only pyproject.toml",
 ]
