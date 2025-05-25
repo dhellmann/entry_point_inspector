@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=61"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "entry_point_inspector"
@@ -33,9 +33,3 @@ epi = "entry_point_inspector.app:main"
 group_list = "entry_point_inspector.group:GroupList"
 group_show = "entry_point_inspector.group:GroupShow"
 ep_show = "entry_point_inspector.ep:EntryPointShow"
-
-[tool.setuptools]
-include-package-data = true
-
-[tool.setuptools.packages.find]
-where = ["."]
