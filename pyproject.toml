@@ -38,7 +38,7 @@ ep_show = "entry_point_inspector.ep:EntryPointShow"
 source = "vcs"
 
 [tool.hatch.envs.test]
-dependencies = ["ruff", "pytest", "check-python-versions", "twine"]
+dependencies = ["ruff", "pytest", "check-python-versions", "twine", "pre-commit"]
 [tool.hatch.envs.test.scripts]
 lint = [
     "ruff check entry_point_inspector",
@@ -47,7 +47,7 @@ lint = [
 lint-fix = ["ruff format entry_point_inspector"]
 test = "pytest entry_point_inspector"
 pkglint = [
-    "hatch build",
+    "hatch -e default build",
     "twine check dist/*.tar.gz",
     "check-python-versions --only pyproject.toml",
 ]

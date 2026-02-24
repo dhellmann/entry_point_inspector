@@ -4,7 +4,7 @@ import traceback
 
 from cliff import show
 
-import pkg_resources
+from importlib.metadata import distributions, entry_points
 
 LOG = logging.getLogger(__name__)
 
@@ -37,25 +37,33 @@ class EntryPointShow(show.ShowOne):
                 parsed_args.group,
                 parsed_args.distribution,
             )
-            dist = pkg_resources.get_distribution(parsed_args.distribution)
-            ep = pkg_resources.get_entry_info(
-                dist,
-                parsed_args.group,
-                parsed_args.name,
-            )
+            # Find the specific distribution and entry point
+            ep = None
+            for dist in distributions():
+                if dist.metadata["Name"] == parsed_args.distribution:
+                    for entry_point in dist.entry_points:
+                        if (
+                            entry_point.group == parsed_args.group
+                            and entry_point.name == parsed_args.name
+                        ):
+                            ep = entry_point
+                            break
+                    if ep:
+                        break
+            if not ep:
+                raise ValueError(
+                    "Could not find %r in %r from distribution %r"
+                    % (parsed_args.name, parsed_args.group, parsed_args.distribution)
+                )
         else:
             LOG.debug(
                 "Looking for %s in group %s",
                 parsed_args.name,
                 parsed_args.group,
             )
+            eps = entry_points(group=parsed_args.group, name=parsed_args.name)
             try:
-                ep = next(
-                    pkg_resources.iter_entry_points(
-                        parsed_args.group,
-                        parsed_args.name,
-                    )
-                )
+                ep = next(iter(eps))
             except StopIteration:
                 raise ValueError(
                     "Could not find %r in %r"
@@ -70,7 +78,18 @@ class EntryPointShow(show.ShowOne):
             tb = traceback.format_exception(*sys.exc_info())
         else:
             tb = ""
+
+        # Parse module.attr format
+        if "." in ep.value:
+            module_name, _, attr = ep.value.rpartition(".")
+        else:
+            module_name = ep.value
+            attr = ""
+
+        dist_name = ep.dist.metadata["Name"] if ep.dist else "unknown"
+        dist_location = getattr(ep.dist, "_path", "unknown") if ep.dist else "unknown"
+
         return (
             ("Module", "Member", "Distribution", "Path", "Error"),
-            (ep.module_name, ".".join(ep.attrs), str(ep.dist), ep.dist.location, tb),
+            (module_name, attr, dist_name, str(dist_location), tb),
         )
