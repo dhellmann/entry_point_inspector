@@ -4,17 +4,16 @@ import sys
 from cliff import app
 from cliff import commandmanager
 
-import pkg_resources
+from importlib.metadata import version
 
 
 class EntryPointInspector(app.App):
     log = logging.getLogger(__name__)
 
     def __init__(self):
-        dist = pkg_resources.get_distribution("entry_point_inspector")
         super(EntryPointInspector, self).__init__(
             description="Tool for looking at the entry points on a system",
-            version=dist.version,
+            version=version("entry_point_inspector"),
             command_manager=commandmanager.CommandManager("epi.commands"),
         )
 
